@@ -8,6 +8,11 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Home',
     component: () => import(/* webpackChunkName: "about" */ '../views/home.vue')
+  },
+  {
+    path: '/crearProyecto',
+    name: 'CrearProyecto',
+    component: () => import(/* webpackChunkName: "about" */ '../components/crearProyecto.vue')
   }
  
 ]

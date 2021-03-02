@@ -38,6 +38,10 @@
 
 <script>
 export default {
+    name: 'CrearProyecto',
+        props: {
+        msg: String
+    },
     data(){
         return{
             message:'',
