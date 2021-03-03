@@ -26,6 +26,11 @@ export default {
         msg: String
     },
   components: {
-  }
+  },
+
+    methods:{
+        
+}
+
 }
 </script>

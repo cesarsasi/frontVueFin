@@ -6,43 +6,67 @@
         max-width="374">
             <template>
                 <div>
-                    <v-card-title class="headline ">Agregar un proyecto</v-card-title>
+                    <v-card-title class="headline ">Formulario de Postulación</v-card-title>
                     <v-text-field
-                        v-model = "newProyecto.nombre"
-                        id="nombre"
+                        v-model = "newPostulacion.nombreProyecto"
+                        id="nombreProyecto"
                         label="Nombre del Proyecto"
                         align="center"
                         class="mx-6 headline"
                         hide-details="auto"></v-text-field>
                     <v-text-field
-                        v-model = "newProyecto.nombreCompania"
-                        id="nombreCompania"
-                        label="Nombre de Compañia"
+                        v-model = "newPostulacion.nombrePostulante"
+                        id="nombrePostulante"
+                        label="Nombre del Postulante"
                         align="center"
                         class="mx-6 headline"
                         ></v-text-field>
                     <v-text-field 
-                        v-model = "newProyecto.presentacion"
-                        id="presentacion"
-                        label="Presentacion"
+                        v-model = "newPostulacion.apellidoPostulante"
+                        id="Apellidos"
+                        label="Presentación"
                         align="center"
                         class="mx-6 headline"></v-text-field>
                     <v-text-field 
-                        v-model = "newProyecto.fundamentacion"
-                        id="fundamentacion"
-                        label="Fundamentacion"
+                        v-model = "newPostulacion.rutPostulante"
+                        id="rutPostulante"
+                        label="Rut"
                         align="center"
                         class="mx-6 headline"></v-text-field>
                     <v-text-field 
-                        v-model = "newProyecto.condiciones"
-                        id="condiciones"
-                        label="Condiciones"
+                        v-model = "newPostulacion.correoPostulante"
+                        id="correoPostulante"
+                        label="Correo"
                         align="center"
                         class="mx-6 headline"></v-text-field>
                     <v-text-field 
-                        v-model = "newProyecto.requerimientosProyecto"
-                        id="reqProyecto"
-                        label="Requerimientos Proyecto"
+                        v-model = "newPostulacion.telefonoPostulante"
+                        id="telefonoPostulante"
+                        label="Teléfono"
+                        align="center"
+                        class="mx-6 headline"></v-text-field>
+                    <v-text-field 
+                        v-model = "newPostulacion.propuestaValor"
+                        id="propuestaValor"
+                        label="Propuesta de Valor"
+                        align="center"
+                        class="mx-6 headline"></v-text-field>
+                    <v-text-field 
+                        v-model = "newPostulacion.propuestaTecnica"
+                        id="propuestaTecnica"
+                        label="Propuesta técnica"
+                        align="center"
+                        class="mx-6 headline"></v-text-field>
+                    <v-text-field 
+                        v-model = "newPostulacion.propuestaEconomica"
+                        id="propuestaEconomica"
+                        label="Propuesta Económica"
+                        align="center"
+                        class="mx-6 headline"></v-text-field>
+                    <v-text-field 
+                        v-model = "newPostulacion.planificacion"
+                        id="planificacion"
+                        label="Planificación"
                         align="center"
                         class="mx-6 headline"></v-text-field>
                     <v-card-actions>
@@ -55,7 +79,7 @@
         </template>
         <div class="info">
             <h2>Objeto</h2>
-            <code>{{newProyecto}}</code>
+            <code>{{newPostulacion}}</code>
             <p class="message">
                 {{message}}
             </p>
@@ -65,14 +89,14 @@
 
 <script>
 export default {
-    name: 'CrearProyecto',
+    name: 'CrearPostulacion',
     props: {
         msg: String
     },
     data(){
         return{
             message:'',
-            newProyecto:{
+            newPostulacion:{
             }
         }  
     },
@@ -80,15 +104,15 @@ export default {
     methods:{
         send:async function(){
             this.message = '';
-            if (this.newProyecto.nombre == ''){
-                this.message = 'Debes ingresar un nombre para el proyecto'
+            if (this.newPostulacion.nombre == ''){
+                this.message = 'Debes ingresar un nombre'
                 return false
             }
             try {
-                var result = await this.$http.post('/api/projects',this.newProyecto);
-                let proyecto = result.data;
-                this.message = `Se creó un nuevo proyecto con id:${proyecto.data._id}`;
-                this.newProyecto = {};
+                var result = await this.$http.post('/api/postulacions',this.newPostulacion);
+                let postulacion = result.data;
+                this.message = `Se creó una nueva postulacion con id:${postulacion.data._id}`;
+                this.newPostulacion = {};
             } catch (error) {
                 console.log('error', error)
                 this.message = 'Ocurrió un error'
