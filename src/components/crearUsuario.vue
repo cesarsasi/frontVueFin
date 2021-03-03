@@ -8,35 +8,47 @@
                 <div>
                     <v-card-title class="headline ">Creación cuenta usuario</v-card-title>
                     <v-text-field
+                        v-model = "newUsuario.nombre"
                         id="nombre"
                         label="Nombre"
                         align="center"
                         class="mx-6 headline"
                         hide-details="auto"></v-text-field>
                     <v-text-field 
+                        v-model = "newUsuario.apellido"
                         id="apellido"
                         label="Apellido"
                         align="center"
                         class="mx-6 headline"
                         ></v-text-field>
                     <v-text-field 
+                        v-model = "newUsuario.rut"
                         id="rut"
                         label="Rut"
                         align="center"
                         class="mx-6 headline"></v-text-field>
                     <v-text-field 
+                        v-model = "newUsuario.correo"
                         id="correo"
                         label="Correo"
                         align="center"
                         class="mx-6 headline"></v-text-field>
                     <v-text-field 
+                        v-model = "newUsuario.contrasena"
                         id="contraseña"
                         label="Contraseña"
                         align="center"
                         class="mx-6 headline"></v-text-field>
                     <v-text-field 
+                        v-model = "newUsuario.telefono"
                         id="telefono"
                         label="Telefono"
+                        align="center"
+                        class="mx-6 headline"></v-text-field>
+                    <v-text-field 
+                        v-model = "newUsuario.rol"
+                        id="rol"
+                        label="Rol"
                         align="center"
                         class="mx-6 headline"></v-text-field>
                     <v-card-actions>

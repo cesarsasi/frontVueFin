@@ -6,7 +6,7 @@
                 
                 <v-col md="5">
                     <v-container class="d-flex align-center h-100">
-                        <h1>Bienvenido al Sistema de Emergencias</h1>
+                        <h1>Bienvenido al Sistema de Proyectos</h1>
                     </v-container>
                 </v-col>
                 <v-col class="d-flex flex-column flex-nowrap" md="4">
