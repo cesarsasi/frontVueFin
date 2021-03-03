@@ -14,13 +14,14 @@
         >
           <v-toolbar-title>Lista de Postulaciones </v-toolbar-title>
         </v-toolbar>
+         <v-btn @click="send" color="blue" text> Enviar </v-btn>
       </template>
 
       <template v-slot:default="props">
         <v-row>
           <v-col
             v-for="postulacion in props.items"
-            :key="postulacion.name"
+            :key="postulacion.nombreProyecto"
             cols="12"
             sm="6"
             md="4"
@@ -28,7 +29,7 @@
           >
             <v-card>
               <v-card-title class="subheading font-weight-bold">
-                {{ postulacion.name }}
+                {{ postulacion.nombreProyecto }}
               </v-card-title>
 
               <v-divider></v-divider>
@@ -37,63 +38,63 @@
                 <v-list-item>
                   <v-list-item-content>Calories:</v-list-item-content>
                   <v-list-item-content class="align-end">
-                    {{ postulacion.calories }}
+                    {{ postulacion.nombrePostulante }}
                   </v-list-item-content>
                 </v-list-item>
 
                 <v-list-item>
                   <v-list-item-content>Fat:</v-list-item-content>
                   <v-list-item-content class="align-end">
-                    {{ postulacion.fat }}
+                    {{ postulacion.apellidoPostulante }}
                   </v-list-item-content>
                 </v-list-item>
 
                 <v-list-item>
                   <v-list-item-content>Carbs:</v-list-item-content>
                   <v-list-item-content class="align-end">
-                    {{ postulacion.carbs }}
+                    {{ postulacion.rutPostulante }}
                   </v-list-item-content>
                 </v-list-item>
 
                 <v-list-item>
                   <v-list-item-content>Protein:</v-list-item-content>
                   <v-list-item-content class="align-end">
-                    {{ postulacion.protein }}
+                    {{ postulacion.correoPostulante }}
                   </v-list-item-content>
                 </v-list-item>
 
                 <v-list-item>
                   <v-list-item-content>Sodium:</v-list-item-content>
                   <v-list-item-content class="align-end">
-                    {{ postulacion.sodium }}
+                    {{ postulacion.telefonoPostulante }}
                   </v-list-item-content>
                 </v-list-item>
 
                 <v-list-item>
                   <v-list-item-content>Calcium:</v-list-item-content>
                   <v-list-item-content class="align-end">
-                    {{ postulacion.calcium }}
+                    {{ postulacion.propuestaValor }}
                   </v-list-item-content>
                 </v-list-item>
 
                 <v-list-item>
                   <v-list-item-content>Iron:</v-list-item-content>
                   <v-list-item-content class="align-end">
-                    {{ postulacion.iron }}
+                    {{ postulacion.propuestaTecnica }}
                   </v-list-item-content>
                 </v-list-item>
 
                 <v-list-item>
                   <v-list-item-content>Iron:</v-list-item-content>
                   <v-list-item-content class="align-end">
-                    {{ postulacion.asd }}
+                    {{ postulacion.propuestaEconomica }}
                   </v-list-item-content>
                 </v-list-item>
 
                 <v-list-item>
                   <v-list-item-content>Iron:</v-list-item-content>
                   <v-list-item-content class="align-end">
-                    {{ postulacion.dadsa }}
+                    {{ postulacion.planificacion }}
                   </v-list-item-content>
                 </v-list-item>
               </v-list>
@@ -124,69 +125,16 @@
   export default {
     data: () => ({
       itemsPerPage: 4,
-      postulaciones: [
-        {
-          name: 'Frozen Yogurt',
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          sodium: 87,
-          calcium: '14%',
-          iron: '1%',
-          asd: '1%',
-          dadsa: '1%',
-        },
-        {
-          name: 'Frozen Yogurt',
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          sodium: 87,
-          calcium: '14%',
-          iron: '1%',
-          asd: '1%',
-          dadsa: '1%',
-        },
-        {
-          name: 'Frozen Yogurt',
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          sodium: 87,
-          calcium: '14%',
-          iron: '1%',
-          asd: '1%',
-          dadsa: '1%',
-        },
-        {
-          name: 'Frozen Yogurt',
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          sodium: 87,
-          calcium: '14%',
-          iron: '1%',
-          asd: '1%',
-          dadsa: '1%',
-        },
-      ],
+      postulaciones: [],
     }),
     methods:{
-        send:async function(){
+        send: function(){
             this.message = '';
-            if (this.newProyecto.nombre == ''){
-                this.message = 'Debes ingresar un nombre para el proyecto'
-                return false
-            }
             try {
-                var result = await this.$http.get('/api/projects',this.newProyecto);
-                let proyecto = result.data;
-                this.message = `Se creó un nuevo proyecto con id:${proyecto.data._id}`;
-                this.newProyecto = {};
+                var result = this.$http.get('/api/postulacions');
+                this.message = 'se creo bien bacano ${result.data}';
+                this.postulaciones = result.data;
+                console.log(this.postulaciones);
             } catch (error) {
                 console.log('error', error)
                 this.message = 'Ocurrió un error'
