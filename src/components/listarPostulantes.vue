@@ -1,144 +1,64 @@
 <template>
-  <v-container fluid>
-    <v-data-iterator
-      :items="postulaciones"
-      :items-per-page.sync="itemsPerPage"
-      hide-default-footer
-    >
-      <template v-slot:header>
-        <v-toolbar
-          class="mb-2"
-          color="indigo darken-5"
-          dark
-          flat
-        >
-          <v-toolbar-title>Lista de Postulaciones </v-toolbar-title>
-        </v-toolbar>
-         <v-btn @click="send" color="blue" text> Enviar </v-btn>
-      </template>
+  <v-container>
+    <v-layout justify-center>
+      <v-flex xs6>
+        <h2>Lista de postulantes:</h2>
+          </v-flex>
+    </v-layout>
 
-      <template v-slot:default="props">
-        <v-row>
-          <v-col
-            v-for="postulacion in props.items"
-            :key="postulacion.nombreProyecto"
-            cols="12"
-            sm="6"
-            md="4"
-            lg="3"
-          >
-            <v-card>
-              <v-card-title class="subheading font-weight-bold">
-                {{ postulacion.nombreProyecto }}
-              </v-card-title>
+    <v-layout justify-center>
+      <table>
+        <tbody>
+        <tr>
+          <td><h4>Nombre Proyecto</h4></td>
+          <td><h4>Nombre Postulante</h4></td>
+          <td><h4>Apellido Postulante</h4></td>
+          <td><h4>Rut </h4></td>
+          <td><h4>Correo </h4></td>
+          <td><h4>Telefono </h4></td>
+          <td><h4>Prop. Valor </h4></td>
+          <td><h4>Prop. Econo </h4></td>
+          <td><h4>Prop. Tec </h4></td>
+          <td><h4>Planificacion </h4></td>
 
-              <v-divider></v-divider>
 
-              <v-list dense>
-                <v-list-item>
-                  <v-list-item-content>Calories:</v-list-item-content>
-                  <v-list-item-content class="align-end">
-                    {{ postulacion.nombrePostulante }}
-                  </v-list-item-content>
-                </v-list-item>
-
-                <v-list-item>
-                  <v-list-item-content>Fat:</v-list-item-content>
-                  <v-list-item-content class="align-end">
-                    {{ postulacion.apellidoPostulante }}
-                  </v-list-item-content>
-                </v-list-item>
-
-                <v-list-item>
-                  <v-list-item-content>Carbs:</v-list-item-content>
-                  <v-list-item-content class="align-end">
-                    {{ postulacion.rutPostulante }}
-                  </v-list-item-content>
-                </v-list-item>
-
-                <v-list-item>
-                  <v-list-item-content>Protein:</v-list-item-content>
-                  <v-list-item-content class="align-end">
-                    {{ postulacion.correoPostulante }}
-                  </v-list-item-content>
-                </v-list-item>
-
-                <v-list-item>
-                  <v-list-item-content>Sodium:</v-list-item-content>
-                  <v-list-item-content class="align-end">
-                    {{ postulacion.telefonoPostulante }}
-                  </v-list-item-content>
-                </v-list-item>
-
-                <v-list-item>
-                  <v-list-item-content>Calcium:</v-list-item-content>
-                  <v-list-item-content class="align-end">
-                    {{ postulacion.propuestaValor }}
-                  </v-list-item-content>
-                </v-list-item>
-
-                <v-list-item>
-                  <v-list-item-content>Iron:</v-list-item-content>
-                  <v-list-item-content class="align-end">
-                    {{ postulacion.propuestaTecnica }}
-                  </v-list-item-content>
-                </v-list-item>
-
-                <v-list-item>
-                  <v-list-item-content>Iron:</v-list-item-content>
-                  <v-list-item-content class="align-end">
-                    {{ postulacion.propuestaEconomica }}
-                  </v-list-item-content>
-                </v-list-item>
-
-                <v-list-item>
-                  <v-list-item-content>Iron:</v-list-item-content>
-                  <v-list-item-content class="align-end">
-                    {{ postulacion.planificacion }}
-                  </v-list-item-content>
-                </v-list-item>
-              </v-list>
-
-              
-            </v-card>
-          </v-col>
-        </v-row>
-      </template>
-
-      <template v-slot:footer>
-        <v-toolbar
-          class="mt-2"
-          color="indigo"
-          dark
-          flat
-        >
-          <v-toolbar-title class="subheading">
-            This is a footer
-          </v-toolbar-title>
-        </v-toolbar>
-      </template>
-    </v-data-iterator>
+        </tr>
+          <tr v-for="postulacion in postulaciones" v-bind:key="postulacion">
+            <td><v-flex class="mr-5 mt-3">{{ postulacion.nombreProyecto }}</v-flex></td>
+            <td><v-flex class="mr-5 mt-3">{{ postulacion.nombrePostulante }}</v-flex></td>
+            <td><v-flex class="mr-5 mt-3">{{ postulacion.apellidoPostulante }}</v-flex></td>
+            <td><v-flex class="mr-5 mt-3">{{ postulacion.rutPostulante }}</v-flex></td>
+            <td><v-flex class="mr-5 mt-3">{{ postulacion.correoPostulante }}</v-flex></td>
+            <td><v-flex class="mr-5 mt-3">{{ postulacion.telefonoPostulante }}</v-flex></td>
+            <td><v-flex class="mr-5 mt-3">{{ postulacion.propuestaValor }}</v-flex></td>
+            <td><v-flex class="mr-5 mt-3">{{ postulacion.propuestaEconomica }}</v-flex></td>
+            <td><v-flex class="mr-5 mt-3">{{ postulacion.propuestaTecnica }}</v-flex></td>
+            <td><v-flex class="mr-5 mt-3">{{ postulacion.planificacion }}</v-flex></td>
+          </tr>
+        </tbody>
+      </table>
+    </v-layout>
   </v-container>
 </template>
+
 
 <script>
   export default {
     data: () => ({
       itemsPerPage: 4,
-      postulaciones: [],
+      postulaciones: null,
     }),
+
+    mounted(){
+      this.getPostulaciones();
+    },
+
     methods:{
-        send: function(){
-            this.message = '';
-            try {
-                var result = this.$http.get('/api/postulacions');
-                this.message = 'se creo bien bacano ${result.data}';
-                this.postulaciones = result.data;
-                console.log(this.postulaciones);
-            } catch (error) {
-                console.log('error', error)
-                this.message = 'Ocurrió un error'
-            }
+        getPostulaciones(){
+            this.$http.get('/api/postulacions').then(response => {
+              this.postulaciones = response.data.data})
+            .catch (e=> console.log(e))
+            console.log(this.postulaciones)
         }
     }
 
