@@ -57,11 +57,11 @@ export default {
                 return false
             }
             try {
-                var result = await this.$http.post('/api/usuarios',
+                var result = await this.$http.post('/api/users',
 this.newUsuario);
-                let cliente = result.data;
+                let user = result.data;
                 this.message = `Se creó un nuevo usuario con id:
-${usuario.data._id}`;
+${user.data._id}`;
                 this.newUsuario = {};
             } catch (error) {
                 console.log('error', error)
