@@ -46,6 +46,7 @@
   export default {
     data: () => ({
       itemsPerPage: 4,
+      postulanteSeleccionado:null,
       postulaciones: null,
     }),
 
