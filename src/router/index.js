@@ -13,6 +13,11 @@ Vue.use(VueRouter)
     path: '/crearProyecto',
     name: 'CrearProyecto',
     component: () => import(/* webpackChunkName: "about" */ '../components/crearProyecto.vue')
+  },
+  {
+    path: '/listarPostulantes',
+    name: 'ListarPostulantes',
+    component: () => import(/* webpackChunkName: "about" */ '../components/listarPostulantes.vue')
   }
  
 ]
