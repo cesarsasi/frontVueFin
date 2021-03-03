@@ -1,47 +1,68 @@
 <template>
-<div class="container">
-    <h1>Creación cuenta usuario</h1>
-    <form>
-        <div>
-            <label for="name">Nombre</label>
-            <input type="text" id="nombre" v-model="newUsuario.nombre">
-        </div>
-        <div>
-            <label for="name">Apellido</label>
-            <input type="text" id="apellido" v-model="newUsuario.apellido">
-        </div>
-        <div>
-            <label for="name">Rut</label>
-            <input type="text" id="rut" v-model="newUsuario.rut">
-        </div>
-        <div>
-            <label for="name">Correo</label>
-            <input type="text" id="correo" v-model="newUsuario.correo">
-        </div>
-        <div>
-            <label for="name">Contraseña</label>
-            <input type="text" id="contrasena" v-model="newUsuario.contrasena">
-        </div>
-        <div>
-        <div>
-            <label for="name">Telefono</label>
-            <input type="text" id="telefono" v-model="newUsuario.telefono">
-        </div>
-            <button type="button" @click="send">Crear Usuario</button>
-        </div>
-        <div class="info">
+    <v-container fluid>
+    <template>
+    <v-card
+        class="mx-auto my-12"
+        max-width="374">
+            <template>
+                <div>
+                    <v-card-title class="headline ">Creación cuenta usuario</v-card-title>
+                    <v-text-field
+                        id="nombre"
+                        label="Nombre"
+                        align="center"
+                        class="mx-6 headline"
+                        hide-details="auto"></v-text-field>
+                    <v-text-field 
+                        id="apellido"
+                        label="Apellido"
+                        align="center"
+                        class="mx-6 headline"
+                        ></v-text-field>
+                    <v-text-field 
+                        id="rut"
+                        label="Rut"
+                        align="center"
+                        class="mx-6 headline"></v-text-field>
+                    <v-text-field 
+                        id="correo"
+                        label="Correo"
+                        align="center"
+                        class="mx-6 headline"></v-text-field>
+                    <v-text-field 
+                        id="contraseña"
+                        label="Contraseña"
+                        align="center"
+                        class="mx-6 headline"></v-text-field>
+                    <v-text-field 
+                        id="telefono"
+                        label="Telefono"
+                        align="center"
+                        class="mx-6 headline"></v-text-field>
+                    <v-card-actions>
+                        <v-btn @click="send" color="blue" text> Crear Usuario </v-btn>
+                        <v-btn color="blue" text> Cancelar </v-btn>
+                    </v-card-actions>
+                </div>
+            </template>
+    </v-card>
+    </template>
+    <div class="info">
             <h2>Objeto</h2>
             <code>{{newUsuario}}</code>
             <p class="message">
                 {{message}}
             </p>
-        </div>
-    </form>
-</div>
+    </div>
+    </v-container>
 </template> 
 
 <script>
 export default {
+    name: 'CrearUsuario',
+    props: {
+        msg: String
+    },
     data(){
         return{
             message:'',

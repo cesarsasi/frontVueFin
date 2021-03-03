@@ -1,42 +1,31 @@
 <template>
-  <div class="home">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
-  
-    <CrearProyecto:msg="openDialog" v-on:logged="logged = $event"></CrearProyecto>
-  </div>
+    <div class="d-flex align-items-center h-100 justify-center">
+        <div>
+            <Login :msg="openDialog" v-on:logged="logged = $event"></Login>
+            <v-container   class="d-flex justify-center align-items-center w-100 h-100 mt-5 p-5">
+                
+                <v-col md="5">
+                    <v-container class="d-flex align-center h-100">
+                        <h1>Bienvenido al Sistema de Emergencias</h1>
+                    </v-container>
+                </v-col>
+                <v-col class="d-flex flex-column flex-nowrap" md="4">
+                    <v-btn color="success" @click="dialogTrue()" class="mr-4 mb-2">
+                            Ingresar
+                    </v-btn>
+                </v-col>
+            </v-container>
+        </div>
+    </div>
 </template>
 
 <script>
-import CrearProyecto from './crearProyecto.vue'
 export default {
+  name: 'Home',
+  props: {
+        msg: String
+    },
   components: {
-    CrearProyecto
   }
 }
 </script>

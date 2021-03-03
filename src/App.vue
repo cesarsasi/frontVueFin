@@ -2,28 +2,24 @@
     <v-app>
           <v-app-bar app color="primary" dark>
             <div class="d-flex align-center">
-                <v-btn icon color="blue" @click="goHome">
-                  
+                <v-btn icon color="blue" >
                 </v-btn>
                 <h3 style="margin-bottom: 0;">Sistema de postulaciones a Proyectos </h3>
             </div >
             <v-spacer></v-spacer>
-            <div v-if="idRol == 0">
+            <div>
                 <!-- Colocar if para saber el Rol del usuario para que no se muestre a un voluntario-->
-                <v-btn text to="/registroAdmin">
-                  <v-icon left>mdi-pencil</v-icon>
-                    Registrar Admin
-                </v-btn>
+
             </div>
-            <div v-if = "logged">
-              <v-btn text @click="logOut">
+            <div >
+              <v-btn text >
                 <v-icon rigth>mdi-heart</v-icon>
                 Salir  
               </v-btn> 
             </div>
           </v-app-bar>
           <v-main>
-            <router-view to="/taskList"></router-view>
+            <router-view to="/crearProyecto"></router-view>
           </v-main>
       </v-app>
 </template>

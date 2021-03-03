@@ -31,5 +31,10 @@
 </template>
 
 <script>
-
+export default {
+  name: 'ListarPostulantes',
+  props: {
+      msg: String
+  }
+}
 </script>

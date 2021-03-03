@@ -1,5 +1,4 @@
 <template>
-
 <table>
   <thead>
     <tr>
@@ -31,5 +30,10 @@
 </template>
 
 <script>
-
+export default {
+    name: 'ListarProyectos',
+    props: {
+        msg: String
+    },
+}
 </script>
