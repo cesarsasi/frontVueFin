@@ -1,151 +1,80 @@
 <template>
-  <v-container>
-    <v-row class="text-center">
-      <v-col cols="12">
-        <v-img
-          :src="require('../assets/logo.svg')"
-          class="my-3"
-          contain
-          height="200"
-        />
-      </v-col>
-
-      <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Vuetify
-        </h1>
-
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br>please join our online
-          <a
-            href="https://community.vuetifyjs.com"
-            target="_blank"
-          >Discord Community</a>
-        </p>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          What's next?
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(next, i) in whatsNext"
-            :key="i"
-            :href="next.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ next.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          Important Links
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(link, i) in importantLinks"
-            :key="i"
-            :href="link.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ link.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          Ecosystem
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ eco.text }}
-          </a>
-        </v-row>
-      </v-col>
-    </v-row>
-  </v-container>
-</template>
+    <v-container fluid>
+    <template>
+    <v-card
+        class="mx-auto my-12"
+        max-width="374">
+            <template>
+                <div>
+                    <v-card-title class="headline ">Inicio de Sesión</v-card-title>
+                    <v-text-field
+                        v-model = "newUsuario.nombre"
+                        id="nombre"
+                        label="Correo"
+                        align="center"
+                        class="mx-6 headline"
+                        hide-details="auto"></v-text-field>
+                    <v-text-field 
+                        v-model = "newUsuario.apellido"
+                        id="apellido"
+                        label="Contraseña"
+                        align="center"
+                        class="mx-6 headline"
+                        ></v-text-field>
+                    
+                    <v-card-actions>
+                        <v-btn @click="send" color="blue" text> Iniciar Sesión </v-btn>
+                        <v-btn color="blue" @click="ToRouteHome()" text> Cancelar </v-btn>
+                    </v-card-actions>
+                </div>
+            </template>
+    </v-card>
+    </template>
+    <div class="info">
+            <h2>Objeto</h2>
+            <code>{{newUsuario}}</code>
+            <p class="message">
+                {{message}}
+            </p>
+    </div>
+    </v-container>
+</template> 
 
 <script>
-  export default {
-    name: 'HelloWorld',
-
-    data: () => ({
-      ecosystem: [
-        {
-          text: 'vuetify-loader',
-          href: 'https://github.com/vuetifyjs/vuetify-loader',
+export default {
+    name: 'CrearUsuario',
+    props: {
+        msg: String
+    },
+    data(){
+        return{
+            message:'',
+            newUsuario:{
+            }
+        }       
+    },
+    methods:{
+        send:async function(){
+            this.message = '';
+            if (this.newUsuario.nombre == ''){
+                this.message = 'Debes ingresar un correo'
+                return false
+            }
+            try {
+                var result = await this.$http.post('/api/users',
+this.newUsuario);
+                let user = result.data;
+                this.message = `Se creó un nuevo usuario con id:
+${user.data._id}`;
+                this.newUsuario = {};
+            } catch (error) {
+                console.log('error', error)
+                this.message = 'Ocurrió un error'
+            }
         },
-        {
-          text: 'github',
-          href: 'https://github.com/vuetifyjs/vuetify',
-        },
-        {
-          text: 'awesome-vuetify',
-          href: 'https://github.com/vuetifyjs/awesome-vuetify',
-        },
-      ],
-      importantLinks: [
-        {
-          text: 'Documentation',
-          href: 'https://vuetifyjs.com',
-        },
-        {
-          text: 'Chat',
-          href: 'https://community.vuetifyjs.com',
-        },
-        {
-          text: 'Made with Vuetify',
-          href: 'https://madewithvuejs.com/vuetify',
-        },
-        {
-          text: 'Twitter',
-          href: 'https://twitter.com/vuetifyjs',
-        },
-        {
-          text: 'Articles',
-          href: 'https://medium.com/vuetify',
-        },
-      ],
-      whatsNext: [
-        {
-          text: 'Explore components',
-          href: 'https://vuetifyjs.com/components/api-explorer',
-        },
-        {
-          text: 'Select a layout',
-          href: 'https://vuetifyjs.com/getting-started/pre-made-layouts',
-        },
-        {
-          text: 'Frequently Asked Questions',
-          href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
-        },
-      ],
-    }),
-  }
+        ToRouteHome(){
+            window.location = '/';
+        }
+    }
+}
 </script>
