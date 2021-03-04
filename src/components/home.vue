@@ -10,8 +10,11 @@
                     </v-container>
                 </v-col>
                 <v-col class="d-flex flex-column flex-nowrap" md="4">
-                    <v-btn color="success" @click="dialogTrue()" class="mr-4 mb-2">
+                    <v-btn color="success" @click="ToRouteLogin()" class="mr-4 mb-2">
                             Ingresar
+                    </v-btn>
+                    <v-btn color="success" @click="ToRouteCrearCuenta()" class="mr-4 mb-2">
+                            Crear cuenta
                     </v-btn>
                 </v-col>
             </v-container>
@@ -29,6 +32,13 @@ export default {
   },
 
     methods:{
+        ToRouteCrearCuenta() {
+            window.location = '/crearUsuario';
+        },
+
+            ToRouteLogin() {
+        window.location = '/login';
+        }
         
 }
 

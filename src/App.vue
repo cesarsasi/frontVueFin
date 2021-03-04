@@ -12,7 +12,7 @@
 
             </div>
             <div >
-              <v-btn text >
+              <v-btn @click="ToRouteHome()" text>
                 <v-icon rigth>mdi-heart</v-icon>
                 Salir  
               </v-btn> 
@@ -42,6 +42,10 @@ export default {
   methods:{
     getTodos(){
       console.log("Codigo respuesta")
+    },
+
+    ToRouteHome(){
+      window.location = '/';
     }
   }
 };

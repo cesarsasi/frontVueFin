@@ -4,6 +4,7 @@ import ListarPostulantes from '@/components/listarPostulantes.vue';
 import ListarProyectos from '@/components/listarProyectos.vue';
 import CrearPostulacion from '@/components/crearPostulacion.vue';
 import Home from '@/components/home.vue';
+import Login from '@/components/login.vue';
 
 
 export const routes = [
@@ -13,6 +14,7 @@ export const routes = [
   { path: '/listarProyectos', component: ListarProyectos },
   { path: '/crearPostulacion', component: CrearPostulacion },
   { path: '/', component: Home },
+  { path: '/login', component: Login }
 ];
 
 export default routes

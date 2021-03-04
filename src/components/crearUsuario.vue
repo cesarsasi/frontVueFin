@@ -53,7 +53,7 @@
                         class="mx-6 headline"></v-text-field>
                     <v-card-actions>
                         <v-btn @click="send" color="blue" text> Crear Usuario </v-btn>
-                        <v-btn color="blue" text> Cancelar </v-btn>
+                        <v-btn color="blue" @click="ToRouteHome()" text> Cancelar </v-btn>
                     </v-card-actions>
                 </div>
             </template>
@@ -100,6 +100,9 @@ ${user.data._id}`;
                 console.log('error', error)
                 this.message = 'Ocurrió un error'
             }
+        },
+        ToRouteHome(){
+            window.location = '/';
         }
     }
 }
