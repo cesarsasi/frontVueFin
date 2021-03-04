@@ -2,7 +2,7 @@
   <v-container>
     <v-layout justify-center>
       <v-flex xs6>
-        <h2>Lista de postulantes:</h2>
+        <h2>Lista de Proyectos:</h2>
           </v-flex>
     </v-layout>
 

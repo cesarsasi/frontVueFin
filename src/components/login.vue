@@ -64,7 +64,7 @@ export default {
                 var result = await this.$http.post('/api/users',
 this.newUsuario);
                 let user = result.data;
-                this.message = `Se creó un nuevo usuario con id:
+                this.message = `Sesión iniciada correctamente con id:
 ${user.data._id}`;
                 this.newUsuario = {};
             } catch (error) {
